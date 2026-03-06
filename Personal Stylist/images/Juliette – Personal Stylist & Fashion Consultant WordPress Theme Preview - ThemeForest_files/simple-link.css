@@ -1,0 +1,16 @@
+.okthemes-simple-link {
+    display: flex;
+}
+
+.okthemes-simple-link .simple-link-icon {
+    display: flex;
+    align-items: center;
+}
+
+.okthemes-simple-link .simple-link-icon svg {
+    fill: currentColor;
+}
+
+.okthemes-simple-link .simple-link-icon svg {
+    fill: currentColor;
+}

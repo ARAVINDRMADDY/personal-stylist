@@ -1,0 +1,104 @@
+﻿// Testimonials Carousel with Swiper.js
+document.addEventListener('DOMContentLoaded', function () {
+    initTestimonialsCarousels();
+});
+
+// Initialize when Elementor frontend is ready
+(function($){
+    $(window).on('elementor/frontend/init', function() {
+        elementorFrontend.hooks.addAction('frontend/element_ready/okthemes-testimonials-carousel.default', function($element) {
+            initTestimonialsCarousels();
+        });
+    });
+})(jQuery);
+
+function initTestimonialsCarousels() {
+    document.querySelectorAll('.okthemes-testimonials-carousel').forEach(function (carousel, index) {
+        // Skip if already initialized
+        if (carousel.classList.contains('okt-initialized')) {
+            return;
+        }
+
+        carousel.classList.add('okt-initialized');
+
+        let settings = {
+            navigation: carousel.dataset.navigation || 'both',
+            autoplay: carousel.dataset.autoplay === 'yes',
+            autoplaySpeed: parseInt(carousel.dataset.autoplaySpeed) || 5000,
+            loop: carousel.dataset.loop === 'yes',
+            transitionSpeed: parseInt(carousel.dataset.transitionSpeed) || 500,
+            pauseOnHover: carousel.dataset.pauseOnHover === 'true',
+            slidesPerView: carousel.dataset.slidesPerView || 1,
+            slidesPerViewTablet: carousel.dataset.slidesPerViewTablet || '',
+            slidesPerViewMobile: carousel.dataset.slidesPerViewMobile || '',
+            spaceBetween: parseInt(carousel.dataset.spaceBetween) || 30,
+        };
+
+        // Convert slidesPerView to number
+        settings.slidesPerView = parseInt(settings.slidesPerView);
+
+        // Count total slides
+        const totalSlides = carousel.querySelectorAll('.swiper-slide').length;
+        
+        // Disable loop if not enough slides for the current slidesPerView
+        // Loop requires at least 2x slidesPerView slides to work properly
+        const minSlidesForLoop = settings.slidesPerView * 2;
+        const canLoop = settings.loop && totalSlides >= minSlidesForLoop;
+
+        // Configure breakpoints for responsive behavior
+        const breakpoints = {};
+        
+        if (settings.slidesPerViewMobile) {
+            breakpoints[320] = {
+                slidesPerView: parseInt(settings.slidesPerViewMobile)
+            };
+        }
+        
+        if (settings.slidesPerViewTablet) {
+            breakpoints[768] = {
+                slidesPerView: parseInt(settings.slidesPerViewTablet)
+            };
+        }
+
+        let swiperOptions = {
+            slidesPerView: settings.slidesPerView,
+            spaceBetween: settings.spaceBetween,
+            loop: canLoop,
+            speed: settings.transitionSpeed,
+            autoplay: settings.autoplay ? {
+                delay: settings.autoplaySpeed,
+                disableOnInteraction: settings.pauseOnHover,
+            } : false,
+            breakpoints: Object.keys(breakpoints).length ? breakpoints : undefined,
+        };
+
+        // Add navigation arrows if needed
+        if (settings.navigation === 'arrows' || settings.navigation === 'both') {
+            swiperOptions.navigation = {
+                nextEl: carousel.querySelector('.swiper-button-next'),
+                prevEl: carousel.querySelector('.swiper-button-prev'),
+            };
+        }
+
+        // Add pagination dots if needed
+        if (settings.navigation === 'dots' || settings.navigation === 'both') {
+            swiperOptions.pagination = {
+                el: carousel.querySelector('.swiper-pagination'),
+                clickable: true,
+            };
+        }
+
+        // Initialize Swiper
+        const swiper = new Swiper(carousel, swiperOptions);
+
+        // Pause on hover functionality
+        if (settings.autoplay && settings.pauseOnHover) {
+            carousel.addEventListener('mouseenter', function() {
+                swiper.autoplay.stop();
+            });
+            carousel.addEventListener('mouseleave', function() {
+                swiper.autoplay.start();
+            });
+        }
+    });
+}

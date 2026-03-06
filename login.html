@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Groww Stylist</title>
+  <link rel="icon" type="image/jpeg" href="images/growwstylist_logo.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#A68A5B',      
+            'theme-gold-dark': '#8c734b', 
+            'dark-gray': '#1a1a1a',       
+            'light-peach': '#F5F0EB',     
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Subtle pulsing glow for the background elements */
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+    .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+  </style>
+</head>
+<body class="font-sans antialiased text-gray-800 dark:text-white h-screen overflow-hidden flex flex-col relative bg-gray-50 dark:bg-[#121212] transition-colors duration-300">
+
+  <div class="absolute inset-0 overflow-hidden z-0">
+    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-theme-gold/20 dark:bg-theme-gold/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-theme-gold/10 dark:bg-theme-gold/5 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" style="animation-delay: 3s;"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 dark:via-[#121212]/50 to-gray-50 dark:to-[#121212]"></div>
+  </div>
+
+  <nav class="absolute top-0 w-full z-50 p-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <span class="text-2xl font-serif font-bold text-dark-gray dark:text-white tracking-wide transition-colors">
+          Groww <span class="text-theme-gold italic">Stylist</span>
+        </span>
+      </a>
+
+      <div class="flex items-center space-x-3">
+        <button id="rtl-toggle" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 flex items-center justify-center text-dark-gray dark:text-white transition-all text-[10px] font-bold tracking-wider" title="Toggle RTL">
+          RTL
+        </button>
+
+        <button id="theme-toggle" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 flex items-center justify-center text-dark-gray dark:text-white transition-all" title="Toggle Theme">
+          <i class="fas fa-moon dark:hidden text-xs"></i>
+          <i class="fas fa-sun hidden dark:inline text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex-1 flex items-center justify-center p-4 relative z-10">
+    
+    <div class="w-full max-w-md bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 shadow-2xl p-8 md:p-10 border-t-4 border-t-theme-gold animate-fade-in relative overflow-hidden mt-16 transition-colors duration-300">
+        
+        <div class="absolute top-0 right-0 w-32 h-32 bg-theme-gold/10 dark:bg-theme-gold/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+
+        <div class="text-center mb-8 relative z-10">
+          <div class="w-14 h-14 bg-theme-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-theme-gold/20">
+            <i class="fas fa-user-circle text-theme-gold text-2xl"></i>
+          </div>
+          <h2 class="text-3xl font-serif font-bold text-dark-gray dark:text-white mb-2 transition-colors">Welcome Back</h2>
+          <p class="text-gray-500 dark:text-gray-400 text-sm font-light tracking-wide transition-colors">Enter your details to access your personal style feed.</p>
+        </div>
+
+        <form class="space-y-6 relative z-10" onsubmit="handleLogin(event)">
+
+          <div class="group">
+              <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2 transition-colors group-focus-within:text-theme-gold dark:group-focus-within:text-theme-gold">
+                Email Address
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 ltr:left-0 rtl:right-0 pl-3 rtl:pr-3 flex items-center pointer-events-none">
+                  <i class="far fa-envelope text-gray-400 dark:text-gray-500 group-focus-within:text-theme-gold dark:group-focus-within:text-theme-gold transition-colors"></i>
+                </div>
+                <input 
+                  type="email" 
+                  required
+                  placeholder="name@example.com"
+                  class="w-full ltr:pl-10 rtl:pr-10 pr-4 rtl:pl-4 py-3 bg-gray-50 dark:bg-[#222] border border-gray-200 dark:border-gray-700 rounded-none text-dark-gray dark:text-white focus:outline-none focus:border-theme-gold focus:ring-1 focus:ring-theme-gold transition-all placeholder-gray-400 dark:placeholder-gray-600 text-sm"
+                />
+              </div>
+          </div>
+
+          <div class="group">
+              <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2 transition-colors group-focus-within:text-theme-gold dark:group-focus-within:text-theme-gold">
+                Password
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 ltr:left-0 rtl:right-0 pl-3 rtl:pr-3 flex items-center pointer-events-none">
+                  <i class="fas fa-lock text-gray-400 dark:text-gray-500 group-focus-within:text-theme-gold dark:group-focus-within:text-theme-gold transition-colors"></i>
+                </div>
+                <input 
+                    type="password" 
+                    id="password"
+                    required
+                    placeholder="••••••••"
+                    class="w-full ltr:pl-10 rtl:pr-10 pr-10 rtl:pl-10 py-3 bg-gray-50 dark:bg-[#222] border border-gray-200 dark:border-gray-700 rounded-none text-dark-gray dark:text-white focus:outline-none focus:border-theme-gold focus:ring-1 focus:ring-theme-gold transition-all placeholder-gray-400 dark:placeholder-gray-600 text-sm"
+                />
+                <button 
+                    type="button" 
+                    onclick="togglePassword()"
+                    class="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-theme-gold dark:hover:text-theme-gold transition-colors focus:outline-none"
+                >
+                    <i class="far fa-eye" id="toggleIcon"></i>
+                </button>
+              </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs">
+              <label class="flex items-center cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-sm border-gray-300 dark:border-gray-600 text-theme-gold focus:ring-theme-gold focus:ring-1 bg-gray-50 dark:bg-[#222]">
+                <span class="ltr:ml-2 rtl:mr-2 text-gray-600 dark:text-gray-400 font-medium transition-colors">Remember me</span>
+              </label>
+              <a href="#" class="text-theme-gold font-bold hover:text-theme-gold-dark transition-colors uppercase tracking-wider">
+                Forgot Password?
+              </a>
+          </div>
+
+          <button 
+              type="submit"
+              class="w-full flex items-center justify-center gap-2 py-3.5 bg-theme-gold hover:bg-theme-gold-dark text-white font-bold text-xs uppercase tracking-[0.15em] rounded-none shadow-lg hover:shadow-theme-gold/40 transform hover:-translate-y-0.5 transition-all duration-300"
+          >
+              <span>Sign In</span> <i class="fas fa-arrow-right"></i>
+          </button>
+
+          <div class="relative my-8">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-200 dark:border-gray-700 transition-colors"></div>
+              </div>
+              <div class="relative flex justify-center text-xs">
+                <span class="px-4 bg-white dark:bg-[#1a1a1a] text-gray-500 uppercase tracking-widest transition-colors">Or connect with</span>
+              </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+              <button type="button" class="flex items-center justify-center px-4 py-2.5 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#222] hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition-all group">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4 ltr:mr-2 rtl:ml-2" alt="Google">
+                <span class="text-xs font-bold text-gray-600 dark:text-gray-300 group-hover:text-dark-gray dark:group-hover:text-white uppercase tracking-wider transition-colors">Google</span>
+              </button>
+
+              <button type="button" class="flex items-center justify-center px-4 py-2.5 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#222] hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition-all group">
+                <i class="fab fa-facebook-f text-[#1877F2] text-sm ltr:mr-2 rtl:ml-2"></i>
+                <span class="text-xs font-bold text-gray-600 dark:text-gray-300 group-hover:text-dark-gray dark:group-hover:text-white uppercase tracking-wider transition-colors">Facebook</span>
+              </button>
+          </div>
+
+        </form>
+
+        <div class="mt-8 text-center relative z-10">
+          <p class="text-gray-500 dark:text-gray-400 text-xs transition-colors">
+            Not a member yet? 
+            <a href="register.html" class="text-theme-gold font-bold hover:underline transition-colors uppercase tracking-wider ml-1">
+                Join Now
+            </a>
+          </p>
+        </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Toggle Password Visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+      }
+    }
+
+    // Handle Login Submit (Simulation)
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const button = event.target.querySelector('button[type="submit"]');
+      const icon = button.querySelector('i');
+      const span = button.querySelector('span');
+      
+      const originalIconClass = icon.className;
+      
+      // Loading State
+      icon.className = 'fas fa-circle-notch fa-spin';
+      span.innerText = 'AUTHENTICATING...';
+      button.disabled = true;
+      button.classList.add('opacity-80', 'cursor-not-allowed');
+
+      // Simulate API call, then redirect
+      setTimeout(() => {
+        window.location.href = 'user-dashboard.html';
+      }, 1500);
+    }
+
+    // Theme Toggle Function
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+
+    // RTL Toggle Function
+    const rtlToggle = document.getElementById('rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+  </script>
+
+</body>
+</html>

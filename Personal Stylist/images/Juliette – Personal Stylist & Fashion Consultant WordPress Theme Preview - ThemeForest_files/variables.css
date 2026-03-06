@@ -1,0 +1,207 @@
+/*--------------------------------------------------------------
+# Global variables
+--------------------------------------------------------------*/
+:root {
+
+    /*Global colors*/
+    --juliette-primary-color: #e4afac;
+    --juliette-secondary-color: #2D2A26;
+    --juliette-tertiary-color: #fffaf7;
+    --juliette-accent-color: #e4afac;
+    --juliette-modules-color: #FBF5EF;
+
+
+    /*Global typography fonts*/
+    --juliette-primary-font: "Ibarra Real Nova";
+    --juliette-secondary-font: "Inter";
+
+    /*Body typography*/
+    --juliette-body-typography-font-family: var(--juliette-secondary-font);
+    --juliette-body-typography-font-size: 18px;
+    --juliette-body-typography-font-weight: 400;
+    --juliette-body-typography-line-height: 1.6em;
+    --juliette-body-typography-letter-spacing: -1px;
+    --juliette-body-typography-color: #2D2A26;
+    --juliette-body-typography-text-transform: none;
+
+    /*Headings typography*/
+
+    /* H1 typography*/
+    --juliette-h1-typography-font-family: var(--juliette-secondary-font);
+    --juliette-h1-typography-font-size: 7vw;
+    --juliette-h1-typography-font-weight: 900;
+    --juliette-h1-typography-line-height: 1em;
+    --juliette-h1-typography-letter-spacing: -0.05em;
+    --juliette-h1-typography-color: #2D2A26;
+    --juliette-h1-typography-text-transform: none;
+
+    /* H2 typography*/
+    --juliette-h2-typography-font-family: var(--juliette-secondary-font);
+    --juliette-h2-typography-font-size: 5.6rem;
+    --juliette-h2-typography-font-weight: 900;
+    --juliette-h2-typography-line-height: 1.1em;
+    --juliette-h2-typography-letter-spacing: -0.05em;
+    --juliette-h2-typography-color: #2D2A26;
+    --juliette-h2-typography-text-transform: none;
+
+    /* H3 typography*/
+    --juliette-h3-typography-font-family: var(--juliette-secondary-font);
+    --juliette-h3-typography-font-size: 3rem;
+    --juliette-h3-typography-font-weight: 900;
+    --juliette-h3-typography-line-height: 1.1em;
+    --juliette-h3-typography-letter-spacing: -0.05em;
+    --juliette-h3-typography-color: #2D2A26;
+    --juliette-h3-typography-text-transform: none;
+
+    /* H4 typography*/
+    --juliette-h4-typography-font-family: var(--juliette-primary-font);
+    --juliette-h4-typography-font-size: 3rem;
+    --juliette-h4-typography-font-weight: 500;
+    --juliette-h4-typography-line-height: 1.1em;
+    --juliette-h4-typography-letter-spacing: -0.05em;
+    --juliette-h4-typography-color: #2D2A26;
+    --juliette-h4-typography-text-transform: none;
+
+    /* H5 typography*/
+    --juliette-h5-typography-font-family: var(--juliette-secondary-font);
+    --juliette-h5-typography-font-size: 0.9rem;
+    --juliette-h5-typography-font-weight: 700;
+    --juliette-h5-typography-line-height: 1em;
+    --juliette-h5-typography-letter-spacing: 0.05em;
+    --juliette-h5-typography-color: #2D2A26;
+    --juliette-h5-typography-text-transform: uppercase;
+
+    /* H6 typography*/
+    --juliette-h6-typography-font-family: var(--juliette-secondary-font);
+    --juliette-h6-typography-font-size: 1rem;
+    --juliette-h6-typography-font-weight: 900;
+    --juliette-h6-typography-line-height: 1em;
+    --juliette-h6-typography-letter-spacing: -0.05em;
+    --juliette-h6-typography-color: #2D2A26;
+    --juliette-h6-typography-text-transform: none;
+
+    /*Buttons*/
+    --juliette-buttons-typography-font-family: var(--juliette-secondary-font);
+    --juliette-buttons-typography-font-size: var(--juliette-h5-typography-font-size);
+    --juliette-buttons-typography-font-weight: var(--juliette-h5-typography-font-weight);
+    --juliette-buttons-typography-line-height: var(--juliette-h5-typography-line-height);
+    --juliette-buttons-typography-letter-spacing: var(--juliette-h5-typography-letter-spacing);
+    --juliette-buttons-typography-color: #2D2A26;
+    --juliette-buttons-typography-text-transform: var(--juliette-h5-typography-text-transform);
+
+    --juliette-buttons-padding: 30px 50px 30px 50px;
+
+    --juliette-buttons-border: 0px 0px 0px 0px;
+    --juliette-buttons-border-style: solid;
+    --juliette-buttons-border-radius: 0px;
+
+    --juliette-buttons-color: var(--juliette-secondary-color);
+    --juliette-buttons-color-hover: var(--juliette-primary-color);
+    --juliette-buttons-bg-color: var(--juliette-primary-color);
+    --juliette-buttons-bg-color-hover: var(--juliette-secondary-color);
+    --juliette-buttons-border-color: var(--juliette-primary-color);
+    --juliette-buttons-border-color-hover: var(--juliette-secondary-color);
+
+    /*Others*/
+    --juliette-body-background-color: #FFFAF7;
+    --juliette-header-background-color: #FFFAF7;
+    --juliette-footer-background-color: var(--juliette-secondary-color);
+    --juliette-modules-background-color: var(--juliette-modules-color);
+
+    --juliette-paragraph-spacing: 1.6em;
+    --juliette-paragraph-lead: 1.3rem;
+    --juliette-container-width: 1460px;
+    --juliette-sidebar-width: 25%;
+
+    --juliette-footer-text-color: #fff;
+    --juliette-links-color: var(--juliette-body-typography-color);
+
+    --juliette-grid-gap: 4em;
+    --juliette-layout-padding: 4em;
+
+    --juliette-footer-font-size: var(--juliette-body-typography-font-size);
+    --juliette-footer-copyright-font-size: var(--juliette-body-typography-font-size);
+
+    /*Quote*/
+    --juliette-quote-font-family: var(--juliette-primary-font);
+    --juliette-quote-font-size: 3.6rem;
+    --juliette-quote-font-weight: 700;
+    --juliette-quote-line-height: 1.1em;
+    --juliette-quote-letter-spacing: -0.05em;
+    --juliette-quote-color: var(--juliette-body-typography-color);
+    --juliette-quote-text-transform: none;
+
+    /*Page header*/
+    --juliette-page-header-min-height: 400px;
+    --juliette-page-header-padding: 4em 2.5em 4em 2.5em;
+    --juliette-page-header-bg-color: var(--juliette-tertiary-color);
+
+    /*Menu*/
+    --juliette-menu-item-color: var(--juliette-secondary-color);
+    --juliette-menu-item-hover-color: var(--juliette-primary-color);
+
+    --juliette-menu-typography-font-family: var(--juliette-secondary-font);
+    --juliette-menu-typography-font-size: var(--juliette-h5-typography-font-size);
+    --juliette-menu-typography-font-weight: var(--juliette-h5-typography-font-weight);
+    --juliette-menu-typography-line-height: var(--juliette-h5-typography-line-height);
+    --juliette-menu-typography-letter-spacing: var(--juliette-h5-typography-letter-spacing);
+    --juliette-menu-typography-color: var(--juliette-h5-typography-color);
+    --juliette-menu-typography-text-transform: var(--juliette-h5-typography-text-transform);
+
+    --juliette-submenu-bg-color: var(--juliette-tertiary-color);
+    --juliette-submenu-item-color: var(--juliette-body-typography-color);
+    --juliette-submenu-item-hover-color: var(--juliette-primary-color);
+
+    --juliette-submenu-typography-font-family: var(--juliette-secondary-font);
+    --juliette-submenu-typography-font-size: var(--juliette-h5-typography-font-size);
+    --juliette-submenu-typography-font-weight: var(--juliette-h5-typography-font-weight);
+    --juliette-submenu-typography-line-height: var(--juliette-h5-typography-line-height);
+    --juliette-submenu-typography-letter-spacing: var(--juliette-h5-typography-letter-spacing);
+    --juliette-submenu-typography-color: var(--juliette-h5-typography-color);
+    --juliette-submenu-typography-text-transform: var(--juliette-h5-typography-text-transform);
+
+    --juliette-mobile-bg: var(--juliette-tertiary-color);
+
+    /*Forms*/
+    --juliette-form-border-color: var(--juliette-primary-color);
+    --juliette-form-label-font-family: var(--juliette-secondary-font);
+    --juliette-form-label-font-size: var(--juliette-body-typography-font-size);
+    --juliette-form-label-font-weight: var(--juliette-body-typography-font-weight);
+    --juliette-form-label-letter-spacing: var(--juliette-body-typography-letter-spacing);
+    --juliette-form-label-color: var(--juliette-body-typography-color);
+    --juliette-form-label-text-transform: var(--juliette-body-typography-text-transform);
+
+}
+
+
+/*Responsive*/
+
+/*Tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --juliette-h1-typography-font-size: 3.4rem;
+        --juliette-h2-typography-font-size: 2.8rem;
+        --juliette-h3-typography-font-size: 2.3rem;
+        --juliette-h4-typography-font-size: 2rem;
+        --juliette-h5-typography-font-size: 1.75rem;
+        
+    }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+    :root {
+        --juliette-h1-typography-font-size: 3rem;
+        --juliette-h2-typography-font-size: 2.3rem;
+        --juliette-h3-typography-font-size: 2rem;
+        --juliette-h4-typography-font-size: 1.75rem;
+        --juliette-h5-typography-font-size: 1.35rem;
+
+        --juliette-navigation-font-size: 2rem;
+        --juliette-submenu-font-size: 1.2rem;
+
+        --juliette-buttons-padding: 10px 25px 10px 25px;
+        --juliette-buttons-typography-font-size: 14px;
+        --juliette-page-header-min-height: 200px;
+    }
+}

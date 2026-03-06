@@ -1,0 +1,111 @@
+﻿/* Testimonials Carousel Styles */
+.okthemes-testimonials-carousel-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.okthemes-testimonials-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.okt-testimonial-card {
+    transition: all 0.3s ease;
+}
+
+.okt-testimonial-quote {
+    margin-bottom: 20px;
+}
+
+.okt-testimonial-author {
+    margin-top: 20px;
+}
+
+.okt-testimonial-author-name {
+    margin-bottom: 5px;
+}
+
+.okt-testimonial-author-meta {
+}
+
+/* Swiper Navigation */
+.okthemes-testimonials-carousel .swiper-button-next,
+.okthemes-testimonials-carousel .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.okthemes-testimonials-carousel .swiper-button-next::after,
+.okthemes-testimonials-carousel .swiper-button-prev::after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.okthemes-testimonials-carousel .swiper-button-prev {
+    left: 0;
+}
+
+.okthemes-testimonials-carousel .swiper-button-prev::after {
+    content: '\f053';
+}
+
+.okthemes-testimonials-carousel .swiper-button-next {
+    right: 0;
+}
+
+.okthemes-testimonials-carousel .swiper-button-next::after {
+    content: '\f054';
+}
+
+.okthemes-testimonials-carousel .swiper-button-next:hover,
+.okthemes-testimonials-carousel .swiper-button-prev:hover {
+    opacity: 0.7;
+}
+
+/* Swiper Pagination */
+.okthemes-testimonials-carousel .swiper-pagination {
+    position: relative;
+    margin-top: 0;
+    text-align: right;
+}
+
+.okthemes-testimonials-carousel .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.okthemes-testimonials-carousel .swiper-pagination-bullet-active {
+    background-color: #000;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .okthemes-testimonials-carousel .okt-swiper-button-next,
+    .okthemes-testimonials-carousel .okt-swiper-button-prev {
+        width: 36px;
+        height: 36px;
+    }
+
+    .okthemes-testimonials-carousel .okt-swiper-button-next::after,
+    .okthemes-testimonials-carousel .okt-swiper-button-prev::after {
+        font-size: 16px;
+    }
+}

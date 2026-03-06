@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="max-w-[100vw] overflow-x-hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Admin Dashboard - Groww Stylist</title>
+  <link rel="icon" type="image/jpeg" href="images/growwstylist_logo.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#A68A5B',      
+            'theme-gold-dark': '#8c734b', 
+            'dark-gray': '#1a1a1a',       
+            'light-peach': '#F5F0EB',     
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    .dark ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-thumb { background: #4b5563; }
+    ::-webkit-scrollbar-thumb:hover { background: #A68A5B; }
+    
+    /* Smooth transition for sidebar */
+    .sidebar-transition {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* RTL Support & Mobile Sidebar Fixes */
+    #sidebar.sidebar-closed { transform: translateX(-100%); }
+    [dir="rtl"] #sidebar { left: auto; right: 0; }
+    [dir="rtl"] #sidebar.sidebar-closed { transform: translateX(100%); }
+    [dir="rtl"] .flex-1.lg\:ml-64 { margin-left: 0; margin-right: 16rem; }
+    
+    body { font-family: 'Lato', sans-serif; }
+    h1, h2, h3, h4, .brand-text { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 dark:bg-[#121212] text-gray-800 dark:text-gray-100 transition-colors duration-300 max-w-[100vw] overflow-x-hidden">
+
+  <div class="flex h-[100dvh] w-full max-w-[100vw] overflow-hidden">
+
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#1a1a1a] border-r border-theme-gold/20 text-white sidebar-closed lg:!translate-x-0 sidebar-transition shadow-2xl flex flex-col">
+      
+      <div class="h-20 flex items-center justify-center border-b border-theme-gold/20 px-6 shrink-0 bg-black/20">
+        <a href="index.html" class="flex items-center space-x-2">
+          <span class="text-xl md:text-2xl font-bold tracking-wide brand-text text-white">Groww <span class="text-theme-gold italic">Stylist</span></span>
+        </a>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1.5 scrollbar-thin">
+        
+        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">Main Menu</p>
+        
+        <a href="admin-dashboard.html" class="flex items-center space-x-3 px-4 py-3 bg-theme-gold text-white rounded-none shadow-lg shadow-theme-gold/20 transition-all duration-300 transform hover:translate-x-1">
+          <i class="fas fa-th-large w-5 text-center"></i>
+          <span class="font-medium tracking-wide">Dashboard</span>
+        </a>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-calendar-check w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Appointments</span>
+          <span class="ml-auto bg-theme-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full">5</span>
+        </a>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-users w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Clients</span>
+        </a>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-user-tie w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Stylists Team</span>
+        </a>
+
+        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-8 mb-3">Management</p>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-tags w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Services & Pricing</span>
+        </a>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-envelope w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Inquiries</span>
+        </a>
+
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-cog w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Settings</span>
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-theme-gold/20 bg-black/20">
+        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group">
+          <div class="overflow-hidden">
+            <p class="text-sm font-bold text-white truncate font-serif group-hover:text-theme-gold transition-colors">Sarah Jenkins</p>
+            <p class="text-[10px] text-gray-400 truncate uppercase tracking-wider">Lead Stylist</p>
+          </div>
+          <i class="fas fa-chevron-right ltr:ml-auto rtl:mr-auto text-xs text-gray-500 group-hover:text-theme-gold transition-colors"></i>
+        </div>
+      </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col w-full min-w-0 lg:ml-64 transition-all duration-300">
+      
+      <header class="h-20 bg-white dark:bg-[#1a1a1a] shadow-sm border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-4 md:px-8 z-30 sticky top-0 w-full min-w-0">
+        
+        <div class="flex items-center gap-2 md:gap-4 min-w-0">
+          <button id="sidebar-toggle" class="lg:hidden p-2 ltr:-ml-2 rtl:-mr-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors focus:outline-none shrink-0">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+          <h2 class="text-lg md:text-xl font-bold text-dark-gray dark:text-white truncate tracking-wide">Overview</h2>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-3 shrink-0">
+          
+          <div class="hidden md:flex relative group">
+            <input type="text" placeholder="Search..." class="ltr:pl-10 rtl:pr-10 ltr:pr-4 rtl:pl-4 py-2 bg-gray-50 dark:bg-[#252525] text-gray-700 dark:text-gray-200 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-theme-gold w-48 lg:w-64 transition-all border border-gray-200 dark:border-gray-700">
+            <i class="fas fa-search absolute ltr:left-3 rtl:right-3 top-2.5 text-gray-400 group-focus-within:text-theme-gold transition-colors"></i>
+          </div>
+
+          <button id="rtl-toggle" class="w-10 h-10 shrink-0 rounded-full bg-gray-50 dark:bg-[#252525] hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all focus:outline-none font-bold text-[10px]" title="Toggle RTL/LTR">
+            <span id="rtl-text">RTL</span>
+          </button>
+
+          <button id="theme-toggle" class="w-10 h-10 shrink-0 rounded-full bg-gray-50 dark:bg-[#252525] hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-theme-gold transition-all focus:outline-none">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+          </button>
+
+          <a href="login.html" class="ml-1 md:ml-2 text-gray-500 hover:text-theme-gold transition-colors shrink-0">
+            <i class="fas fa-sign-out-alt text-lg"></i>
+          </a>
+
+        </div>
+      </header>
+
+      <main class="flex-1 w-full min-w-0 overflow-y-auto overflow-x-hidden bg-gray-50 dark:bg-[#121212] p-4 md:p-8 scroll-smooth">
+        
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-10 w-full group">
+          <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
+                 alt="Fashion Workspace" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/80 to-[#1a1a1a]/20"></div>
+          </div>
+          
+          <div class="relative z-10 py-10 px-6 md:px-12 flex flex-col justify-center min-h-[16rem]">
+            <p class="text-theme-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">Welcome Back</p>
+            <h1 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Sarah Jenkins</h1>
+            <p class="text-gray-300 font-light max-w-lg">You have <span class="text-white font-medium">5 appointments</span> today and <span class="text-white font-medium">3 pending inquiries</span> requiring your attention.</p>
+            <div class="mt-6 flex gap-4">
+              <button class="px-6 py-2.5 bg-theme-gold hover:bg-theme-gold-dark text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-lg shrink-0">View Calendar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 min-w-0">
+          
+          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-theme-gold hover:shadow-lg transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="min-w-0">
+                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Revenue</p>
+                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">$24,500</h3>
+              </div>
+              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                <i class="fas fa-wallet text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center text-xs">
+              <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
+                <i class="fas fa-arrow-up mr-1"></i> 15%
+              </span>
+              <span class="text-gray-400 ml-2 truncate">vs last month</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="min-w-0">
+                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Active Bookings</p>
+                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">32</h3>
+              </div>
+              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                <i class="fas fa-calendar-check text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center text-xs">
+              <span class="text-gray-500 dark:text-gray-400 truncate">12 upcoming this week</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="min-w-0">
+                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Clients</p>
+                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">840</h3>
+              </div>
+              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                <i class="fas fa-users text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center text-xs">
+              <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
+                <i class="fas fa-arrow-up mr-1"></i> 8%
+              </span>
+              <span class="text-gray-400 ml-2 truncate">vs last month</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="min-w-0">
+                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Stylists Active</p>
+                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">6</h3>
+              </div>
+              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                <i class="fas fa-tshirt text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center text-xs">
+              <span class="text-theme-gold font-bold truncate">All online</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10 min-w-0">
+          <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
+            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Revenue Analytics</h3>
+            <div class="relative h-64 w-full min-w-0">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
+            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Booking Status</h3>
+            <div class="relative h-64 w-full min-w-0">
+              <canvas id="projectChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 min-w-0">
+          
+          <div class="lg:col-span-2 bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 overflow-hidden">
+            <div class="p-6 flex items-center justify-between border-b border-gray-100 dark:border-gray-800">
+              <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white">Recent Appointments</h3>
+              <button class="text-xs text-theme-gold hover:text-theme-gold-dark font-bold uppercase tracking-widest transition-colors shrink-0">View All</button>
+            </div>
+            
+            <div class="overflow-x-auto w-full max-w-[100vw]">
+              <table class="w-full text-left rtl:text-right whitespace-nowrap">
+                <thead>
+                  <tr class="bg-gray-50 dark:bg-[#222] text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">
+                    <th class="px-6 py-4 font-bold">Client</th>
+                    <th class="px-6 py-4 font-bold">Service</th>
+                    <th class="px-6 py-4 font-bold">Date & Time</th>
+                    <th class="px-6 py-4 font-bold">Stylist</th>
+                    <th class="px-6 py-4 font-bold">Status</th>
+                    <th class="px-6 py-4 font-bold text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 dark:divide-gray-800 text-sm">
+                  <tr class="hover:bg-gray-50 dark:hover:bg-[#252525] transition-colors">
+                    <td class="px-6 py-4 font-semibold text-dark-gray dark:text-white">Emily Blunt</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Wardrobe Audit</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Oct 28, 10:00 AM</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Sarah Jenkins</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                        Confirmed
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-gray-400 hover:text-theme-gold transition-colors"><i class="fas fa-ellipsis-v"></i></button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 dark:hover:bg-[#252525] transition-colors">
+                    <td class="px-6 py-4 font-semibold text-dark-gray dark:text-white">John Doe</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Personal Shopping</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Oct 29, 2:00 PM</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Marcus Chen</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                        Pending
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-gray-400 hover:text-theme-gold transition-colors"><i class="fas fa-ellipsis-v"></i></button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 dark:hover:bg-[#252525] transition-colors">
+                    <td class="px-6 py-4 font-semibold text-dark-gray dark:text-white">Sarah Williams</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">VIP Makeover</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Nov 02, 9:00 AM</td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Chloe Bennett</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                        Confirmed
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-gray-400 hover:text-theme-gold transition-colors"><i class="fas fa-ellipsis-v"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 p-6 min-w-0">
+            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Recent Inquiries</h3>
+            <div class="space-y-6">
+              
+              <div class="flex items-start space-x-4 rtl:space-x-reverse group cursor-pointer">
+                <div class="w-10 h-10 rounded-full bg-light-peach dark:bg-white/5 flex items-center justify-center text-theme-gold flex-shrink-0 group-hover:bg-theme-gold group-hover:text-white transition-colors">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-sm text-dark-gray dark:text-white truncate pr-2">Michael Brown</h4>
+                    <span class="text-[10px] text-gray-400 whitespace-nowrap shrink-0">2 hrs ago</span>
+                  </div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 leading-relaxed">Looking for a complete wardrobe makeover for my new corporate role...</p>
+                </div>
+              </div>
+
+              <hr class="border-gray-100 dark:border-gray-800">
+
+              <div class="flex items-start space-x-4 rtl:space-x-reverse group cursor-pointer">
+                <div class="w-10 h-10 rounded-full bg-light-peach dark:bg-white/5 flex items-center justify-center text-theme-gold flex-shrink-0 group-hover:bg-theme-gold group-hover:text-white transition-colors">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-sm text-dark-gray dark:text-white truncate pr-2">Emily Davis</h4>
+                    <span class="text-[10px] text-gray-400 whitespace-nowrap shrink-0">5 hrs ago</span>
+                  </div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 leading-relaxed">Interested in color analysis and personal shopping for an upcoming gala...</p>
+                </div>
+              </div>
+
+            </div>
+            <button class="w-full mt-6 py-3 border border-gray-200 dark:border-gray-700 text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-theme-gold hover:border-theme-gold transition-colors">View All Messages</button>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // --- RTL/LTR Toggle Logic ---
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const rtlText = document.getElementById('rtl-text');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('direction') === 'rtl') {
+      html.setAttribute('dir', 'rtl');
+      rtlText.textContent = 'LTR';
+    } else {
+      html.setAttribute('dir', 'ltr');
+      rtlText.textContent = 'RTL';
+    }
+
+    rtlToggle.addEventListener('click', () => {
+      const currentDir = html.getAttribute('dir');
+      
+      if (currentDir === 'ltr') {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+        rtlText.textContent = 'LTR';
+      } else {
+        html.setAttribute('dir', 'ltr');
+        localStorage.setItem('direction', 'ltr');
+        rtlText.textContent = 'RTL';
+      }
+    });
+
+    // --- Responsive Sidebar Logic ---
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    function toggleSidebar() {
+      const isClosed = sidebar.classList.contains('sidebar-closed');
+      
+      if (isClosed) {
+        sidebar.classList.remove('sidebar-closed');
+        overlay.classList.remove('hidden');
+        setTimeout(() => { overlay.classList.remove('opacity-0'); }, 10);
+      } else {
+        sidebar.classList.add('sidebar-closed');
+        overlay.classList.add('opacity-0');
+        setTimeout(() => { overlay.classList.add('hidden'); }, 300);
+      }
+    }
+
+    sidebarToggle.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+
+    // --- Dark Mode Logic ---
+    const themeToggle = document.getElementById('theme-toggle');
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        updateCharts(true);
+      } else {
+        localStorage.setItem('theme', 'light');
+        updateCharts(false);
+      }
+    });
+
+    // --- Chart.js Configuration ---
+    let revenueChart, projectChart;
+
+    function initCharts() {
+      const isDark = html.classList.contains('dark');
+      const textColor = isDark ? '#9ca3af' : '#4b5563';
+      const gridColor = isDark ? '#374151' : '#e5e7eb';
+      const themeGold = '#A68A5B';
+
+      // Revenue Chart
+      const ctx1 = document.getElementById('revenueChart').getContext('2d');
+      revenueChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue ($)',
+            data: [15000, 21000, 18000, 29000, 24000, 34000],
+            borderColor: themeGold,
+            backgroundColor: 'rgba(166, 138, 91, 0.1)',
+            tension: 0.4,
+            fill: true,
+            pointBackgroundColor: themeGold,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { grid: { color: gridColor }, ticks: { color: textColor } },
+            x: { grid: { display: false }, ticks: { color: textColor } }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: isDark ? '#1f2937' : '#fff',
+              titleColor: isDark ? '#fff' : '#111',
+              bodyColor: isDark ? '#ccc' : '#444',
+              borderColor: themeGold,
+              borderWidth: 1,
+              padding: 10
+            }
+          }
+        }
+      });
+
+      // Booking Status Chart
+      const ctx2 = document.getElementById('projectChart').getContext('2d');
+      projectChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Completed', 'Upcoming', 'Pending'],
+          datasets: [{
+            data: [45, 32, 12],
+            backgroundColor: ['#22c55e', themeGold, '#f59e0b'],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: textColor, padding: 20, usePointStyle: true } }
+          }
+        }
+      });
+    }
+
+    function updateCharts(isDark) {
+      const textColor = isDark ? '#9ca3af' : '#4b5563';
+      const gridColor = isDark ? '#374151' : '#e5e7eb';
+
+      if(revenueChart) {
+        revenueChart.options.scales.y.grid.color = gridColor;
+        revenueChart.options.scales.y.ticks.color = textColor;
+        revenueChart.options.scales.x.ticks.color = textColor;
+        revenueChart.options.plugins.tooltip.backgroundColor = isDark ? '#1f2937' : '#fff';
+        revenueChart.options.plugins.tooltip.titleColor = isDark ? '#fff' : '#111';
+        revenueChart.options.plugins.tooltip.bodyColor = isDark ? '#ccc' : '#444';
+        revenueChart.update();
+      }
+      if(projectChart) {
+        projectChart.options.plugins.legend.labels.color = textColor;
+        projectChart.update();
+      }
+    }
+
+    window.addEventListener('load', initCharts);
+    
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+       if (window.innerWidth >= 1024) {
+         sidebar.classList.remove('sidebar-closed');
+         overlay.classList.add('hidden', 'opacity-0');
+       } else {
+         if (!overlay.classList.contains('hidden')) {
+           // Keep open if it was open
+         } else {
+           sidebar.classList.add('sidebar-closed');
+         }
+       }
+    });
+  </script>
+</body>
+</html>

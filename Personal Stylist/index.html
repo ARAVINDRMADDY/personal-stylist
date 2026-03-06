@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groww Stylist - Personal Styling & Wardrobe</title>
+  <link rel="icon" type="image/jpeg" href="images/growwstylist_logo.jpg">
+  <meta name="description" content="Professional personal styling services. Elevate your wardrobe and confidence with our expert stylists.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            coral: '#FF6F61',
+            'dark-gray': '#333333',
+            'light-peach': '#FFDAB9',
+            white: '#FFFFFF'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] { direction: rtl; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+  </style>
+</head>
+<body class="font-sans antialiased transition-colors duration-300 bg-white dark:bg-dark-gray">
+
+  <nav class="bg-dark-gray fixed w-full top-0 z-50 shadow-lg border-b border-coral/20">
+    <div class="max-w-[1400px] mx-auto nav-container px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="flex flex-col">
+              <span class="text-2xl font-bold text-white nav-logo-text">Groww <span class="text-coral">Stylist</span></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 nav-menu-container mx-4">
+          <div class="flex items-center space-x-0.5 lg:space-x-2">
+
+            <div class="relative group">
+              <button class="nav-link text-white hover:text-coral font-medium transition duration-300 flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-white/10">
+                <span class="text-sm">Home</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-dark-gray border dark:border-gray-700 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                <a href="index.html" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach/20 hover:text-coral transition duration-300 rounded-t-md">Home Page 1</a>
+                <a href="home-2.html" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach/20 hover:text-coral transition duration-300 rounded-b-md">Home Page 2</a>
+              </div>
+            </div>
+
+            <a href="about.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">About</a>
+            <a href="services.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">Services</a>
+            
+            <a href="stylists.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">Stylists</a>
+
+            <a href="pricing.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">Pricing</a>
+            <a href="blog.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">Blog</a>
+            <a href="contact.html" class="nav-link text-white hover:text-coral font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">Contact</a>
+
+            <div class="relative group">
+              <button class="nav-link text-white hover:text-coral font-medium transition duration-300 flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-white/10">
+                <span class="text-sm">Dashboard</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <div class="absolute right-0 mt-2 w-56 bg-white dark:bg-dark-gray border dark:border-gray-700 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                <a href="admin-dashboard.html" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach/20 hover:text-coral transition duration-300 rounded-t-md">
+                  <i class="fas fa-user-shield mr-2"></i>Admin Dashboard
+                </a>
+                <a href="user-dashboard.html" class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach/20 hover:text-coral transition duration-300 rounded-b-md">
+                  <i class="fas fa-user mr-2"></i>User Dashboard
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center space-x-2">
+          <a href="login.html" class="nav-button text-white hover:text-coral px-3 py-2 rounded-lg font-medium transition duration-300 text-sm flex items-center space-x-1">
+            <span>Login</span>
+          </a>
+          <a href="register.html" class="nav-button bg-coral hover:bg-[#e85b4d] text-white px-5 py-2.5 rounded-full font-medium transition duration-300 text-sm flex items-center space-x-2 shadow-md whitespace-nowrap">
+            <i class="fas fa-user-plus"></i>
+            <span>Register</span>
+          </a>
+
+          <button id="rtl-toggle" class="nav-icon-button w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition duration-300 ml-2 text-xs font-semibold" title="Toggle RTL">
+            RTL
+          </button>
+
+          <button id="theme-toggle" class="nav-icon-button w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition duration-300 ml-2" title="Toggle Theme">
+            <i class="fas fa-moon dark:hidden text-sm"></i>
+            <i class="fas fa-sun hidden dark:inline text-sm"></i>
+          </button>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-white hover:text-coral focus:outline-none p-3 rounded-lg hover:bg-white/10 transition duration-300">
+            <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 6h18M3 12h18M3 18h18"></path>
+              <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden xl:hidden bg-[#2a2a2a] border-t border-white/10">
+      <div class="px-4 pt-2 pb-4 space-y-1 max-h-[calc(100vh-80px)] overflow-y-auto">
+
+        <div>
+          <button id="mobile-home-dropdown" class="w-full flex items-center justify-between px-4 py-3 text-white bg-white/5 rounded-lg transition duration-300">
+            <span class="text-sm font-medium">Home</span>
+            <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden pl-4 mt-1 space-y-1">
+            <a href="index.html" class="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm">Home Page 1</a>
+            <a href="home-2.html" class="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm">Home Page 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">About</a>
+        <a href="services.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">Services</a>
+        
+        <a href="stylists.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">Stylists</a>
+
+        <a href="pricing.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">Pricing</a>
+        <a href="blog.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">Blog</a>
+        <a href="contact.html" class="block px-4 py-3 text-white hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm font-medium">Contact</a>
+
+        <div>
+          <button id="mobile-dashboard-dropdown" class="w-full flex items-center justify-between px-4 py-3 text-white hover:bg-white/10 rounded-lg transition duration-300">
+            <span class="text-sm font-medium">Dashboard</span>
+            <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="mobile-dashboard-icon"></i>
+          </button>
+          <div id="mobile-dashboard-menu" class="hidden pl-4 mt-1 space-y-1">
+            <a href="admin-dashboard.html" class="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm">
+              <i class="fas fa-user-shield mr-2"></i>Admin Dashboard
+            </a>
+            <a href="user-dashboard.html" class="block px-4 py-2 text-white/80 hover:bg-white/10 hover:text-coral rounded-lg transition duration-300 text-sm">
+              <i class="fas fa-user mr-2"></i>User Dashboard
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-white/10 mt-3 space-y-2">
+          <div class="grid grid-cols-2 gap-2">
+            <a href="login.html" class="block w-full bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg font-medium text-center transition duration-300 text-sm">
+              Login
+            </a>
+            <a href="register.html" class="block w-full bg-coral hover:bg-[#e85b4d] text-white px-4 py-3 rounded-lg font-medium text-center transition duration-300 shadow-md text-sm">
+              Register
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 mt-2">
+            <button id="mobile-rtl-toggle" class="bg-white/10 text-white px-4 py-3 rounded-lg font-medium text-center transition duration-300 hover:bg-white/20 text-sm">
+              <i class="fas fa-language mr-2"></i>RTL
+            </button>
+            <button id="mobile-theme-toggle" class="bg-white/10 text-white px-4 py-3 rounded-lg font-medium text-center transition duration-300 hover:bg-white/20 text-sm">
+              <i class="fas fa-moon mr-2 dark:hidden"></i>
+              <i class="fas fa-sun mr-2 hidden dark:inline"></i>
+              <span>Theme</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-gray-50 via-white to-light-peach/20 dark:from-[#222222] dark:via-[#333333] dark:to-[#222222]">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-coral/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-light-peach/30 dark:bg-coral/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="text-dark-gray dark:text-white space-y-6 animate-fade-in">
+          <div class="inline-flex items-center px-4 py-2 bg-coral/10 dark:bg-coral/20 backdrop-blur-sm border border-coral/30 rounded-full">
+            <span class="w-2 h-2 bg-coral rounded-full mr-2 animate-pulse"></span>
+            <span class="text-sm font-semibold text-coral">Premium Personal Styling</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            Elevate Your <span class="text-coral">Style</span> With <span class="text-coral">Confidence</span>
+          </h1>
+
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Discover a wardrobe that reflects your unique personality. Our expert stylists curate looks that empower you to look and feel your absolute best every day.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="contact.html" class="group inline-flex items-center justify-center px-8 py-4 bg-coral hover:bg-[#e85b4d] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-coral/50 transform hover:scale-105">
+              <span>Book Consultation</span>
+              <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="services.html" class="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-white/10 hover:bg-light-peach/30 dark:hover:bg-white/20 backdrop-blur-sm text-dark-gray dark:text-white border border-gray-200 dark:border-white/30 rounded-full font-semibold transition-all duration-300 shadow-sm">
+              <span>Our Services</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 pt-6">
+            <div class="text-center lg:text-left">
+              <div class="text-4xl font-bold text-coral mb-2">500+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400">Wardrobes Revamped</div>
+            </div>
+            <div class="text-center lg:text-left">
+              <div class="text-4xl font-bold text-coral mb-2">12+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400">Years Experience</div>
+            </div>
+            <div class="text-center lg:text-left">
+              <div class="text-4xl font-bold text-coral mb-2">98%</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400">Confident Clients</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative animate-fade-in">
+           <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-white/10 h-[450px] lg:h-[550px] w-full group">
+             <img src="images/hero-styling-1.jpg" alt="Personal Stylist Session" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+             <div class="absolute inset-0 bg-gradient-to-t from-dark-gray/60 to-transparent"></div>
+           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about-platform" class="py-20 bg-gray-50 dark:bg-[#2a2a2a] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-dark-gray dark:text-white mb-6">About <span class="text-coral">Groww Stylist</span></h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+        We believe that style is a deeply personal expression. Our platform connects you with top-tier fashion experts who understand your lifestyle, body type, and preferences to curate a wardrobe you'll love.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 bg-white dark:bg-dark-gray rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 transition-transform duration-300 hover:-translate-y-2">
+          <div class="w-16 h-16 bg-light-peach/30 text-coral rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-tshirt"></i></div>
+          <h3 class="text-xl font-bold mb-3 text-dark-gray dark:text-white">Personalized Styling</h3>
+          <p class="text-gray-600 dark:text-gray-400">Get outfit recommendations tailored specifically to your unique taste and body shape.</p>
+        </div>
+        <div class="p-8 bg-white dark:bg-dark-gray rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 transition-transform duration-300 hover:-translate-y-2">
+          <div class="w-16 h-16 bg-light-peach/30 text-coral rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-video"></i></div>
+          <h3 class="text-xl font-bold mb-3 text-dark-gray dark:text-white">Virtual Consultations</h3>
+          <p class="text-gray-600 dark:text-gray-400">Connect with your dedicated stylist from anywhere in the world via seamless video calls.</p>
+        </div>
+        <div class="p-8 bg-white dark:bg-dark-gray rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 transition-transform duration-300 hover:-translate-y-2">
+          <div class="w-16 h-16 bg-light-peach/30 text-coral rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-shopping-bag"></i></div>
+          <h3 class="text-xl font-bold mb-3 text-dark-gray dark:text-white">Smart Shopping</h3>
+          <p class="text-gray-600 dark:text-gray-400">Save time and money with curated shopping lists that fit both your vibe and your budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="py-20 bg-white dark:bg-dark-gray transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-gray dark:text-white mb-4">How It <span class="text-coral">Works</span></h2>
+        <p class="text-gray-600 dark:text-gray-400">Your journey to a better wardrobe in four simple steps.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-8 relative">
+        <div class="hidden md:block absolute top-12 left-[10%] w-[80%] h-0.5 bg-gray-200 dark:bg-gray-700 -z-10"></div>
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto bg-coral text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg mb-6 border-4 border-white dark:border-dark-gray relative z-10">1</div>
+          <h3 class="text-xl font-bold mb-2 text-dark-gray dark:text-white">Take the Quiz</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Share your preferences, sizes, and budget with us.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto bg-coral text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg mb-6 border-4 border-white dark:border-dark-gray relative z-10">2</div>
+          <h3 class="text-xl font-bold mb-2 text-dark-gray dark:text-white">Meet Your Stylist</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Get matched with an expert and consult 1-on-1.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto bg-coral text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg mb-6 border-4 border-white dark:border-dark-gray relative z-10">3</div>
+          <h3 class="text-xl font-bold mb-2 text-dark-gray dark:text-white">Review Your Looks</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Receive a personalized lookbook and provide feedback.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto bg-coral text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg mb-6 border-4 border-white dark:border-dark-gray relative z-10">4</div>
+          <h3 class="text-xl font-bold mb-2 text-dark-gray dark:text-white">Step Out in Style</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Purchase what you love and rock your new outfits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured-stylists" class="py-20 bg-light-peach/10 dark:bg-[#222222] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12">
+        <div class="text-center md:text-left mb-6 md:mb-0">
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-gray dark:text-white mb-4">Featured <span class="text-coral">Stylists</span></h2>
+          <p class="text-gray-600 dark:text-gray-400">Meet the creative minds behind our client transformations.</p>
+        </div>
+        <a href="stylists.html" class="inline-flex text-coral hover:text-[#e85b4d] font-semibold items-center transition-colors">
+          View All Stylists <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-dark-gray rounded-2xl overflow-hidden shadow-lg group">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stylist Elena" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-dark-gray dark:text-white">Elena Rodriguez</h3>
+            <p class="text-coral text-sm font-semibold mb-3">Corporate & Casual Elegance</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Helping professionals build versatile, powerful, and authentic everyday wardrobes.</p>
+            <button class="w-full py-2.5 border-2 border-coral text-coral hover:bg-coral hover:text-white rounded-lg transition-colors font-medium">Book Elena</button>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-dark-gray rounded-2xl overflow-hidden shadow-lg group">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stylist Marcus" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-dark-gray dark:text-white">Marcus Chen</h3>
+            <p class="text-coral text-sm font-semibold mb-3">Streetwear & Avant-Garde</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Mastering the art of modern, edgy looks that make a lasting statement wherever you go.</p>
+            <button class="w-full py-2.5 border-2 border-coral text-coral hover:bg-coral hover:text-white rounded-lg transition-colors font-medium">Book Marcus</button>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-dark-gray rounded-2xl overflow-hidden shadow-lg group">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stylist Sarah" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-dark-gray dark:text-white">Sarah Jenkins</h3>
+            <p class="text-coral text-sm font-semibold mb-3">Sustainable & Vintage</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Curating timeless, hand-picked pieces with a highly eco-conscious and chic mindset.</p>
+            <button class="w-full py-2.5 border-2 border-coral text-coral hover:bg-coral hover:text-white rounded-lg transition-colors font-medium">Book Sarah</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trending-outfits" class="py-20 bg-white dark:bg-dark-gray transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-gray dark:text-white mb-4">Trending <span class="text-coral">Outfits</span></h2>
+        <p class="text-gray-600 dark:text-gray-400">Get inspired by our stylists' top lifestyle picks this season.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="relative group rounded-2xl overflow-hidden shadow-md h-96">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trending Outfit 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+            <span class="text-white font-semibold mb-3 tracking-wider">SUMMER CHIC</span>
+            <button class="px-6 py-2 bg-coral text-white font-bold rounded-full hover:bg-[#e85b4d] transition-colors shadow-lg">View Look</button>
+          </div>
+        </div>
+        <div class="relative group rounded-2xl overflow-hidden shadow-md h-96">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trending Outfit 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+            <span class="text-white font-semibold mb-3 tracking-wider">STREET STYLE</span>
+            <button class="px-6 py-2 bg-coral text-white font-bold rounded-full hover:bg-[#e85b4d] transition-colors shadow-lg">View Look</button>
+          </div>
+        </div>
+        <div class="relative group rounded-2xl overflow-hidden shadow-md h-96">
+          <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trending Outfit 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+            <span class="text-white font-semibold mb-3 tracking-wider">CASUAL FRIDAY</span>
+            <button class="px-6 py-2 bg-coral text-white font-bold rounded-full hover:bg-[#e85b4d] transition-colors shadow-lg">View Look</button>
+          </div>
+        </div>
+        <div class="relative group rounded-2xl overflow-hidden shadow-md h-96">
+          <img src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trending Outfit 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+            <span class="text-white font-semibold mb-3 tracking-wider">EVENING WEAR</span>
+            <button class="px-6 py-2 bg-coral text-white font-bold rounded-full hover:bg-[#e85b4d] transition-colors shadow-lg">View Look</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="py-20 bg-gray-50 dark:bg-[#2a2a2a] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-gray dark:text-white mb-4">Client <span class="text-coral">Stories</span></h2>
+        <p class="text-gray-600 dark:text-gray-400">See what our community has to say about their new look.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-dark-gray p-8 rounded-2xl shadow-lg border-t-4 border-coral relative hover:shadow-xl transition-shadow duration-300">
+          <i class="fas fa-quote-left text-5xl text-light-peach/30 dark:text-white/5 absolute top-6 right-6"></i>
+          <div class="flex text-coral mb-6 text-sm">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic mb-8 relative z-10">
+            "Groww Stylist completely transformed my confidence. The stylist understood exactly what I needed for my new corporate role. I feel unstoppable!"
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-coral to-[#e85b4d] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md">A</div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">Amanda T.</h4>
+              <p class="text-xs text-coral font-medium uppercase tracking-wider">Marketing Director</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-dark-gray p-8 rounded-2xl shadow-lg border-t-4 border-coral relative hover:shadow-xl transition-shadow duration-300">
+          <i class="fas fa-quote-left text-5xl text-light-peach/30 dark:text-white/5 absolute top-6 right-6"></i>
+          <div class="flex text-coral mb-6 text-sm">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic mb-8 relative z-10">
+            "I hated shopping and never knew what to wear. My stylist made the entire process so easy and fun. I've never received so many compliments."
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-coral to-[#e85b4d] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md">D</div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">David L.</h4>
+              <p class="text-xs text-coral font-medium uppercase tracking-wider">Software Engineer</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-dark-gray p-8 rounded-2xl shadow-lg border-t-4 border-coral relative hover:shadow-xl transition-shadow duration-300">
+          <i class="fas fa-quote-left text-5xl text-light-peach/30 dark:text-white/5 absolute top-6 right-6"></i>
+          <div class="flex text-coral mb-6 text-sm">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic mb-8 relative z-10">
+            "The virtual wardrobe audit was an absolute eye-opener. We mixed and matched pieces I already owned to create brand new outfits. Highly recommend!"
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-coral to-[#e85b4d] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md">S</div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">Samantha P.</h4>
+              <p class="text-xs text-coral font-medium uppercase tracking-wider">Entrepreneur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark-gray text-white pt-20 pb-10 mt-auto border-t-4 border-coral">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Groww <span class="text-coral">Stylist</span></h3>
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Empowering you to look and feel your best through personalized fashion, wardrobe audits, and expert styling advice.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-coral rounded-full flex items-center justify-center transition-colors duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-coral rounded-full flex items-center justify-center transition-colors duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-coral rounded-full flex items-center justify-center transition-colors duration-300">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-coral rounded-full flex items-center justify-center transition-colors duration-300">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-bold mb-6 text-light-peach">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Home</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-coral transition-colors duration-300">About Us</a></li>
+            <li><a href="stylists.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Our Stylists</a></li>
+            <li><a href="pricing.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Pricing Plans</a></li>
+            <li><a href="blog.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Fashion Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-bold mb-6 text-light-peach">Our Services</h4>
+          <ul class="space-y-3">
+            <li><a href="services.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Personal Styling</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Wardrobe Audit</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Personal Shopping</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Event Styling</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-coral transition-colors duration-300">Color Analysis</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-bold mb-6 text-light-peach">Contact Us</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-coral mt-1 mr-3"></i>
+              <span class="text-gray-400">123 Fashion Street, Salem, Tamil Nadu, India</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-coral mr-3"></i>
+              <a href="tel:+919876543210" class="text-gray-400 hover:text-coral transition-colors">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-coral mr-3"></i>
+              <a href="mailto:info@growwstylist.com" class="text-gray-400 hover:text-coral transition-colors">info@growwstylist.com</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-clock text-coral mr-3"></i>
+              <span class="text-gray-400">Mon - Sat: 9AM - 6PM</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">
+          © 2026 Groww Stylist. All rights reserved.
+        </p>
+        <div class="flex space-x-6">
+          <a href="login.html" class="text-gray-500 hover:text-coral text-sm transition-colors duration-300">Client Login</a>
+          <a href="#" class="text-gray-500 hover:text-coral text-sm transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-coral text-sm transition-colors duration-300">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+    if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+    if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    // Mobile Dropdowns Toggle Function
+    function setupMobileDropdown(dropdownId, menuId, iconId) {
+      const dropdown = document.getElementById(dropdownId);
+      const menu = document.getElementById(menuId);
+      const icon = document.getElementById(iconId);
+      
+      if(dropdown && menu && icon) {
+        dropdown.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          icon.style.transform = menu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+      }
+    }
+
+    // Initialize dropdowns (Removed Stylists from here)
+    setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+    setupMobileDropdown('mobile-dashboard-dropdown', 'mobile-dashboard-menu', 'mobile-dashboard-icon');
+
+  </script>
+</body>
+</html>

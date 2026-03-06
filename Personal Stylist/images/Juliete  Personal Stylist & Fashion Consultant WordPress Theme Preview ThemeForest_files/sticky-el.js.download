@@ -1,0 +1,9 @@
+/**
+ * Sticky Script for OKThemes Toolkit
+ * Updated to use okthemes_ prefixed controls
+ */
+const stickyInit = require("./index");
+
+jQuery(window).on('elementor/frontend/init', function () {
+  stickyInit();
+});
