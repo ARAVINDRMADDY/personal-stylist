@@ -56,6 +56,15 @@
     
     body { font-family: 'Lato', sans-serif; }
     h1, h2, h3, h4, .brand-text { font-family: 'Playfair Display', serif; }
+
+    /* Fade animation for section filtering */
+    .content-section {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="font-sans antialiased bg-gray-50 dark:bg-[#121212] text-gray-800 dark:text-gray-100 transition-colors duration-300 max-w-[100vw] overflow-x-hidden">
@@ -74,45 +83,34 @@
 
       <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1.5 scrollbar-thin">
         
-        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">Main Menu</p>
+        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">Sections</p>
         
-        <a href="admin-dashboard.html" class="flex items-center space-x-3 px-4 py-3 bg-theme-gold text-white rounded-none shadow-lg shadow-theme-gold/20 transition-all duration-300 transform hover:translate-x-1">
+        <a href="#" data-target="all" class="nav-btn flex items-center space-x-3 px-4 py-3 bg-theme-gold text-white rounded-none shadow-lg shadow-theme-gold/20 transition-all duration-300 transform hover:translate-x-1">
           <i class="fas fa-th-large w-5 text-center"></i>
-          <span class="font-medium tracking-wide">Dashboard</span>
+          <span class="font-medium tracking-wide section-name">Overview</span>
         </a>
 
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-calendar-check w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Appointments</span>
+        <a href="#" data-target="section-analytics" class="nav-btn flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-chart-line w-5 text-center transition-colors"></i>
+          <span class="font-medium tracking-wide section-name">Analytics</span>
+        </a>
+
+        <a href="#" data-target="section-appointments" class="nav-btn flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-calendar-check w-5 text-center transition-colors"></i>
+          <span class="font-medium tracking-wide section-name">Appointments</span>
           <span class="ml-auto bg-theme-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full">5</span>
         </a>
 
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-users w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Clients</span>
+        <a href="#" data-target="section-inquiries" class="nav-btn flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-envelope w-5 text-center transition-colors"></i>
+          <span class="font-medium tracking-wide section-name">Inquiries</span>
         </a>
 
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-user-tie w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Stylists Team</span>
+        <a href="#" data-target="section-team" class="nav-btn flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+          <i class="fas fa-user-tie w-5 text-center transition-colors"></i>
+          <span class="font-medium tracking-wide section-name">Stylists Team</span>
         </a>
 
-        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-8 mb-3">Management</p>
-
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-tags w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Services & Pricing</span>
-        </a>
-
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-envelope w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Inquiries</span>
-        </a>
-
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-cog w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Settings</span>
-        </a>
       </nav>
 
       <div class="p-4 border-t border-theme-gold/20 bg-black/20">
@@ -134,7 +132,7 @@
           <button id="sidebar-toggle" class="lg:hidden p-2 ltr:-ml-2 rtl:-mr-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors focus:outline-none shrink-0">
             <i class="fas fa-bars text-xl"></i>
           </button>
-          <h2 class="text-lg md:text-xl font-bold text-dark-gray dark:text-white truncate tracking-wide">Overview</h2>
+          <h2 id="header-title" class="text-lg md:text-xl font-bold text-dark-gray dark:text-white truncate tracking-wide">Overview</h2>
         </div>
 
         <div class="flex items-center gap-2 md:gap-3 shrink-0">
@@ -162,111 +160,113 @@
 
       <main class="flex-1 w-full min-w-0 overflow-y-auto overflow-x-hidden bg-gray-50 dark:bg-[#121212] p-4 md:p-8 scroll-smooth">
         
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-10 w-full group">
-          <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
-                 alt="Fashion Workspace" 
-                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/80 to-[#1a1a1a]/20"></div>
+        <div id="section-analytics" class="content-section">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-10 w-full group">
+            <div class="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
+                   alt="Fashion Workspace" 
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/80 to-[#1a1a1a]/20"></div>
+            </div>
+            
+            <div class="relative z-10 py-10 px-6 md:px-12 flex flex-col justify-center min-h-[16rem]">
+              <p class="text-theme-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">Welcome Back</p>
+              <h1 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Sarah Jenkins</h1>
+              <p class="text-gray-300 font-light max-w-lg">You have <span class="text-white font-medium">5 appointments</span> today and <span class="text-white font-medium">3 pending inquiries</span> requiring your attention.</p>
+              <div class="mt-6 flex gap-4">
+                <button class="px-6 py-2.5 bg-theme-gold hover:bg-theme-gold-dark text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-lg shrink-0">View Calendar</button>
+              </div>
+            </div>
           </div>
-          
-          <div class="relative z-10 py-10 px-6 md:px-12 flex flex-col justify-center min-h-[16rem]">
-            <p class="text-theme-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">Welcome Back</p>
-            <h1 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Sarah Jenkins</h1>
-            <p class="text-gray-300 font-light max-w-lg">You have <span class="text-white font-medium">5 appointments</span> today and <span class="text-white font-medium">3 pending inquiries</span> requiring your attention.</p>
-            <div class="mt-6 flex gap-4">
-              <button class="px-6 py-2.5 bg-theme-gold hover:bg-theme-gold-dark text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-lg shrink-0">View Calendar</button>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 min-w-0">
+            
+            <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-theme-gold hover:shadow-lg transition-all">
+              <div class="flex justify-between items-start mb-4">
+                <div class="min-w-0">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Revenue</p>
+                  <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">$24,500</h3>
+                </div>
+                <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                  <i class="fas fa-wallet text-lg"></i>
+                </div>
+              </div>
+              <div class="flex items-center text-xs">
+                <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
+                  <i class="fas fa-arrow-up mr-1"></i> 15%
+                </span>
+                <span class="text-gray-400 ml-2 truncate">vs last month</span>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+              <div class="flex justify-between items-start mb-4">
+                <div class="min-w-0">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Active Bookings</p>
+                  <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">32</h3>
+                </div>
+                <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                  <i class="fas fa-calendar-check text-lg"></i>
+                </div>
+              </div>
+              <div class="flex items-center text-xs">
+                <span class="text-gray-500 dark:text-gray-400 truncate">12 upcoming this week</span>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+              <div class="flex justify-between items-start mb-4">
+                <div class="min-w-0">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Clients</p>
+                  <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">840</h3>
+                </div>
+                <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                  <i class="fas fa-users text-lg"></i>
+                </div>
+              </div>
+              <div class="flex items-center text-xs">
+                <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
+                  <i class="fas fa-arrow-up mr-1"></i> 8%
+                </span>
+                <span class="text-gray-400 ml-2 truncate">vs last month</span>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
+              <div class="flex justify-between items-start mb-4">
+                <div class="min-w-0">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Stylists Active</p>
+                  <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">6</h3>
+                </div>
+                <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
+                  <i class="fas fa-tshirt text-lg"></i>
+                </div>
+              </div>
+              <div class="flex items-center text-xs">
+                <span class="text-theme-gold font-bold truncate">All online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10 min-w-0">
+            <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
+              <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Revenue Analytics</h3>
+              <div class="relative h-64 w-full min-w-0">
+                <canvas id="revenueChart"></canvas>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
+              <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Booking Status</h3>
+              <div class="relative h-64 w-full min-w-0">
+                <canvas id="projectChart"></canvas>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 min-w-0">
+        <div class="grid lg:grid-cols-3 gap-8 min-w-0 mb-10">
           
-          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-theme-gold hover:shadow-lg transition-all">
-            <div class="flex justify-between items-start mb-4">
-              <div class="min-w-0">
-                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Revenue</p>
-                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">$24,500</h3>
-              </div>
-              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
-                <i class="fas fa-wallet text-lg"></i>
-              </div>
-            </div>
-            <div class="flex items-center text-xs">
-              <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
-                <i class="fas fa-arrow-up mr-1"></i> 15%
-              </span>
-              <span class="text-gray-400 ml-2 truncate">vs last month</span>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
-            <div class="flex justify-between items-start mb-4">
-              <div class="min-w-0">
-                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Active Bookings</p>
-                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">32</h3>
-              </div>
-              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
-                <i class="fas fa-calendar-check text-lg"></i>
-              </div>
-            </div>
-            <div class="flex items-center text-xs">
-              <span class="text-gray-500 dark:text-gray-400 truncate">12 upcoming this week</span>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
-            <div class="flex justify-between items-start mb-4">
-              <div class="min-w-0">
-                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Total Clients</p>
-                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">840</h3>
-              </div>
-              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
-                <i class="fas fa-users text-lg"></i>
-              </div>
-            </div>
-            <div class="flex items-center text-xs">
-              <span class="text-green-600 dark:text-green-400 flex items-center font-bold shrink-0">
-                <i class="fas fa-arrow-up mr-1"></i> 8%
-              </span>
-              <span class="text-gray-400 ml-2 truncate">vs last month</span>
-            </div>
-          </div>
-
-          <div class="bg-white dark:bg-[#1a1a1a] min-w-0 rounded-none p-6 shadow-sm border-l-4 border-gray-200 dark:border-gray-700 hover:border-theme-gold transition-all">
-            <div class="flex justify-between items-start mb-4">
-              <div class="min-w-0">
-                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider truncate">Stylists Active</p>
-                <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mt-1 truncate">6</h3>
-              </div>
-              <div class="p-2 bg-light-peach dark:bg-white/5 text-theme-gold rounded-full shrink-0">
-                <i class="fas fa-tshirt text-lg"></i>
-              </div>
-            </div>
-            <div class="flex items-center text-xs">
-              <span class="text-theme-gold font-bold truncate">All online</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10 min-w-0">
-          <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
-            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Revenue Analytics</h3>
-            <div class="relative h-64 w-full min-w-0">
-              <canvas id="revenueChart"></canvas>
-            </div>
-          </div>
-          <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 w-full overflow-hidden">
-            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Booking Status</h3>
-            <div class="relative h-64 w-full min-w-0">
-              <canvas id="projectChart"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid lg:grid-cols-3 gap-8 min-w-0">
-          
-          <div class="lg:col-span-2 bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 overflow-hidden">
+          <div id="section-appointments" class="content-section lg:col-span-2 bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 min-w-0 overflow-hidden">
             <div class="p-6 flex items-center justify-between border-b border-gray-100 dark:border-gray-800">
               <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white">Recent Appointments</h3>
               <button class="text-xs text-theme-gold hover:text-theme-gold-dark font-bold uppercase tracking-widest transition-colors shrink-0">View All</button>
@@ -332,7 +332,7 @@
             </div>
           </div>
 
-          <div class="bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 p-6 min-w-0">
+          <div id="section-inquiries" class="content-section bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 p-6 min-w-0">
             <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Recent Inquiries</h3>
             <div class="space-y-6">
               
@@ -370,11 +370,97 @@
 
         </div>
 
+        <div id="section-team" class="content-section bg-white dark:bg-[#1a1a1a] shadow-sm border border-gray-100 dark:border-gray-800 p-6 min-w-0">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white">Stylists Team</h3>
+            <button class="text-xs text-theme-gold hover:text-theme-gold-dark font-bold uppercase tracking-widest transition-colors shrink-0">+ Add Stylist</button>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="flex items-center space-x-4 p-4 border border-gray-100 dark:border-gray-800 hover:border-theme-gold transition-colors cursor-pointer group">
+              <div class="w-12 h-12 rounded-full bg-light-peach dark:bg-white/5 flex items-center justify-center text-theme-gold group-hover:bg-theme-gold group-hover:text-white transition-colors">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold text-sm text-dark-gray dark:text-white">Sarah Jenkins</h4>
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-0.5">Lead Stylist</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-green-500" title="Online"></span>
+            </div>
+
+            <div class="flex items-center space-x-4 p-4 border border-gray-100 dark:border-gray-800 hover:border-theme-gold transition-colors cursor-pointer group">
+              <div class="w-12 h-12 rounded-full bg-light-peach dark:bg-white/5 flex items-center justify-center text-theme-gold group-hover:bg-theme-gold group-hover:text-white transition-colors">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold text-sm text-dark-gray dark:text-white">Marcus Chen</h4>
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-0.5">Senior Shopper</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600" title="Offline"></span>
+            </div>
+
+            <div class="flex items-center space-x-4 p-4 border border-gray-100 dark:border-gray-800 hover:border-theme-gold transition-colors cursor-pointer group">
+              <div class="w-12 h-12 rounded-full bg-light-peach dark:bg-white/5 flex items-center justify-center text-theme-gold group-hover:bg-theme-gold group-hover:text-white transition-colors">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold text-sm text-dark-gray dark:text-white">Chloe Bennett</h4>
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-0.5">Color Analyst</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-green-500" title="Online"></span>
+            </div>
+
+          </div>
+        </div>
+
       </main>
     </div>
   </div>
 
   <script>
+    // --- Dashboard Filtering Logic ---
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const contentSections = document.querySelectorAll('.content-section');
+    const headerTitle = document.getElementById('header-title');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active state from all
+        navButtons.forEach(b => {
+          b.classList.remove('bg-theme-gold', 'text-white', 'shadow-lg', 'shadow-theme-gold/20', 'transform', 'hover:translate-x-1');
+          b.classList.add('text-gray-300', 'hover:bg-white/5', 'hover:text-theme-gold', 'group');
+        });
+
+        // Add active state to clicked
+        btn.classList.remove('text-gray-300', 'hover:bg-white/5', 'hover:text-theme-gold', 'group');
+        btn.classList.add('bg-theme-gold', 'text-white', 'shadow-lg', 'shadow-theme-gold/20', 'transform', 'hover:translate-x-1');
+
+        // Filter sections
+        const target = btn.getAttribute('data-target');
+        headerTitle.textContent = btn.querySelector('.section-name').textContent;
+
+        contentSections.forEach(section => {
+          if (target === 'all') {
+            section.classList.remove('hidden');
+          } else {
+            if (section.id === target) {
+              section.classList.remove('hidden');
+            } else {
+              section.classList.add('hidden');
+            }
+          }
+        });
+
+        // Close mobile sidebar upon selection
+        if (window.innerWidth < 1024 && !sidebar.classList.contains('sidebar-closed')) {
+          toggleSidebar();
+        }
+      });
+    });
+
     // --- RTL/LTR Toggle Logic ---
     const rtlToggle = document.getElementById('rtl-toggle');
     const rtlText = document.getElementById('rtl-text');
@@ -390,7 +476,6 @@
 
     rtlToggle.addEventListener('click', () => {
       const currentDir = html.getAttribute('dir');
-      
       if (currentDir === 'ltr') {
         html.setAttribute('dir', 'rtl');
         localStorage.setItem('direction', 'rtl');
@@ -409,7 +494,6 @@
     
     function toggleSidebar() {
       const isClosed = sidebar.classList.contains('sidebar-closed');
-      
       if (isClosed) {
         sidebar.classList.remove('sidebar-closed');
         overlay.classList.remove('hidden');

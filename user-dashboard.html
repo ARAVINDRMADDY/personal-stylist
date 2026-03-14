@@ -76,38 +76,38 @@
         
         <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">Overview</p>
         
-        <a href="user-dashboard.html" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 bg-theme-gold text-white rounded-none shadow-lg shadow-theme-gold/20 transition-all duration-300 transform hover:translate-x-1">
-          <i class="fas fa-home w-5 text-center"></i>
+        <button data-target="all" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 bg-theme-gold text-white rounded-none shadow-lg shadow-theme-gold/20 transition-all duration-300 transform translate-x-1 group text-left">
+          <i class="fas fa-home w-5 text-center text-white transition-colors"></i>
           <span class="font-medium tracking-wide">My Dashboard</span>
-        </a>
+        </button>
 
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-tshirt w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">My Wardrobe</span>
-        </a>
+        <button data-target="section-hero" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 transform hover:translate-x-1 group text-left">
+          <i class="fas fa-star w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Welcome View</span>
+        </button>
 
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-images w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Lookbooks</span>
-        </a>
+        <button data-target="section-package" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 transform hover:translate-x-1 group text-left">
+          <i class="fas fa-gift w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Active Package</span>
+        </button>
 
-        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-8 mb-3">Account</p>
+        <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-8 mb-3">Details</p>
 
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
+        <button data-target="section-stats" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 transform hover:translate-x-1 group text-left">
+          <i class="fas fa-chart-pie w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Quick Stats</span>
+        </button>
+
+        <button data-target="section-insights" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 transform hover:translate-x-1 group text-left">
+          <i class="fas fa-chart-line w-5 text-center group-hover:text-theme-gold transition-colors"></i>
+          <span class="font-medium tracking-wide">Insights & Updates</span>
+        </button>
+
+        <button data-target="section-financials" class="nav-btn w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 transform hover:translate-x-1 group text-left">
           <i class="fas fa-file-invoice-dollar w-5 text-center group-hover:text-theme-gold transition-colors"></i>
           <span class="font-medium tracking-wide">Financials</span>
           <span class="ltr:ml-auto rtl:mr-auto bg-theme-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full">1 Due</span>
-        </a>
-
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-calendar-check w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Appointments</span>
-        </a>
-
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-theme-gold rounded-none transition-all duration-300 group">
-          <i class="fas fa-headset w-5 text-center group-hover:text-theme-gold transition-colors"></i>
-          <span class="font-medium tracking-wide">Message Stylist</span>
-        </a>
+        </button>
       </nav>
 
       <div class="p-4 border-t border-theme-gold/20 bg-black/20">
@@ -152,7 +152,7 @@
 
       <main class="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#121212] p-4 md:p-8 scroll-smooth">
         
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-10 h-64 w-full group">
+        <div id="section-hero" class="content-section relative rounded-3xl overflow-hidden shadow-2xl mb-10 h-64 w-full group transition-all duration-300">
           <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
                  alt="Luxury Closet" 
@@ -170,7 +170,7 @@
           </div>
         </div>
 
-        <div class="bg-dark-gray rounded-none p-8 mb-10 text-white shadow-xl relative overflow-hidden border-l-4 border-theme-gold">
+        <div id="section-package" class="content-section bg-dark-gray rounded-none p-8 mb-10 text-white shadow-xl relative overflow-hidden border-l-4 border-theme-gold transition-all duration-300">
           <div class="absolute ltr:right-0 rtl:left-0 top-0 h-full w-1/2 bg-theme-gold/5 ltr:skew-x-12 rtl:-skew-x-12"></div>
           
           <div class="relative z-10">
@@ -205,7 +205,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div id="section-stats" class="content-section grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 transition-all duration-300">
           
           <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-200 dark:border-gray-800 hover:border-theme-gold transition-all group">
             <div class="flex justify-between items-start mb-4">
@@ -263,7 +263,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
+        <div id="section-insights" class="content-section grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10 transition-all duration-300">
           
           <div class="bg-white dark:bg-[#1a1a1a] p-6 shadow-sm border border-gray-100 dark:border-gray-800">
             <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white mb-6">Wardrobe Investment</h3>
@@ -316,7 +316,7 @@
           </div>
         </div>
 
-        <div class="bg-white dark:bg-[#1a1a1a] rounded-none shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden mb-8">
+        <div id="section-financials" class="content-section bg-white dark:bg-[#1a1a1a] rounded-none shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden mb-8 transition-all duration-300">
           <div class="p-6 flex items-center justify-between border-b border-gray-100 dark:border-gray-800">
             <h3 class="text-lg font-bold font-serif text-dark-gray dark:text-white">Recent Invoices</h3>
             <button class="text-xs text-theme-gold hover:text-theme-gold-dark font-bold uppercase tracking-widest transition-colors">View All</button>
@@ -469,7 +469,7 @@
       }
     });
 
-    // --- Chart.js Configuration for USER Dashboard ---
+    // --- Chart.js Configuration ---
     let budgetChart;
 
     function initCharts() {
@@ -477,7 +477,6 @@
       const textColor = isDark ? '#9ca3af' : '#4b5563';
       const themeGold = '#A68A5B';
 
-      // Budget Breakdown Chart (Doughnut)
       const ctx = document.getElementById('budgetChart').getContext('2d');
       budgetChart = new Chart(ctx, {
         type: 'doughnut',
@@ -486,11 +485,11 @@
           datasets: [{
             data: [350, 400, 250, 250, 1750],
             backgroundColor: [
-              themeGold, // Gold
-              '#3b82f6', // Blue
-              '#10b981', // Green
-              '#8b5cf6', // Purple
-              isDark ? '#333' : '#e5e7eb'  // Gray (Remaining)
+              themeGold, 
+              '#3b82f6', 
+              '#10b981', 
+              '#8b5cf6', 
+              isDark ? '#333' : '#e5e7eb'  
             ],
             borderWidth: 0,
             hoverOffset: 4
@@ -519,18 +518,14 @@
               callbacks: {
                 label: function(context) {
                   let label = context.label || '';
-                  if (label) {
-                    label += ': ';
-                  }
-                  if (context.parsed !== null) {
-                    label += '$' + context.parsed;
-                  }
+                  if (label) { label += ': '; }
+                  if (context.parsed !== null) { label += '$' + context.parsed; }
                   return label;
                 }
               }
             }
           },
-          cutout: '70%' // Thinner ring
+          cutout: '70%'
         }
       });
     }
@@ -544,21 +539,65 @@
         budgetChart.options.plugins.tooltip.titleColor = isDark ? '#fff' : '#111';
         budgetChart.options.plugins.tooltip.bodyColor = isDark ? '#ccc' : '#444';
         
-        // Update Remaining Color based on mode
         budgetChart.data.datasets[0].backgroundColor[4] = isDark ? '#333' : '#e5e7eb';
-        
         budgetChart.update();
       }
     }
 
     window.addEventListener('load', initCharts);
     
-    // Handle Window Resize
     window.addEventListener('resize', () => {
        if (window.innerWidth >= 1024) {
          sidebar.classList.remove('sidebar-closed');
          overlay.classList.add('hidden', 'opacity-0');
        }
+    });
+
+    // --- Filter Navigation Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const navBtns = document.querySelectorAll('.nav-btn');
+      const sections = document.querySelectorAll('.content-section');
+
+      navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+
+          // 1. Update button active/inactive styling
+          navBtns.forEach(b => {
+            b.classList.remove('bg-theme-gold', 'text-white', 'shadow-lg', 'shadow-theme-gold/20', 'translate-x-1');
+            b.classList.add('text-gray-300', 'hover:bg-white/5', 'hover:text-theme-gold', 'hover:translate-x-1');
+            const icon = b.querySelector('i');
+            if (icon) {
+              icon.classList.remove('text-white');
+              icon.classList.add('group-hover:text-theme-gold');
+            }
+          });
+
+          // Set active styling to the clicked button
+          btn.classList.remove('text-gray-300', 'hover:bg-white/5', 'hover:text-theme-gold', 'hover:translate-x-1');
+          btn.classList.add('bg-theme-gold', 'text-white', 'shadow-lg', 'shadow-theme-gold/20', 'translate-x-1');
+          const activeIcon = btn.querySelector('i');
+          if (activeIcon) {
+            activeIcon.classList.remove('group-hover:text-theme-gold');
+            activeIcon.classList.add('text-white');
+          }
+
+          // 2. Show/Hide sections
+          sections.forEach(sec => {
+            if (target === 'all' || sec.id === target) {
+              sec.classList.remove('hidden');
+              // Ensure chart is resized properly if it was previously hidden
+              if (sec.id === 'section-insights' || target === 'all') {
+                if (typeof budgetChart !== 'undefined') {
+                  setTimeout(() => budgetChart.resize(), 50);
+                }
+              }
+            } else {
+              sec.classList.add('hidden');
+            }
+          });
+        });
+      });
     });
 
   </script>
